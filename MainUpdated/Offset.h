@@ -6,14 +6,21 @@
 struct ObjectItem;
 struct ObjectViewport;
 
-static const WORD LoginServerPORT = 44405;
+/*
+	Notes:
 
-///- SERVER TEST
-static const char ClientVersion[8] = "1.07.17";
-static const char ClientSerial[17] = "jw45af7xf4wxj198";
-static const char IpAddress[14] = "127.0.0.1";
+		memosa:
+			http://forum.ragezone.com/f197/release-legend-mu-client-server-1195391/index9.html#post9070730
 
-static const char* ScreenShotPath = "ScreenShots\\Screen(%02d_%02d-%02d-%02d)-%04d.jpg";
+			This server does not require a specific client version.
+			Just need to be sure that packets are the same for some features. 
+
+		The IP address MUST be the local IP and not 127.0.0.1
+
+		Update the database:
+			GameServer.Serial  -> same as ClientVersion
+			GameServer.Version -> same as ClientSerial
+*/
 
 enum MainState
 {
@@ -313,11 +320,11 @@ static const struct MainOffsetByteFix
 	{ 0x00CEB23B, 0x74 },
 
 	///- Version
-	{ MAIN_OFFSET_CLIENT_VERSION, (ClientVersion[0] + 1) },
-	{ MAIN_OFFSET_CLIENT_VERSION + 1, (ClientVersion[2] + 2) },
-	{ MAIN_OFFSET_CLIENT_VERSION + 2, (ClientVersion[3] + 3) },
-	{ MAIN_OFFSET_CLIENT_VERSION + 3, (ClientVersion[5] + 4) },
-	{ MAIN_OFFSET_CLIENT_VERSION + 4, (ClientVersion[6] + 5) },
+	//{ MAIN_OFFSET_CLIENT_VERSION, (ClientVersion[0] + 1) },
+	//{ MAIN_OFFSET_CLIENT_VERSION + 1, (ClientVersion[2] + 2) },
+	//{ MAIN_OFFSET_CLIENT_VERSION + 2, (ClientVersion[3] + 3) },
+	//{ MAIN_OFFSET_CLIENT_VERSION + 3, (ClientVersion[5] + 4) },
+	//{ MAIN_OFFSET_CLIENT_VERSION + 4, (ClientVersion[6] + 5) },
 
 	///- HP, MP, SD, AG
 	{ 0x00C56BBE, 0xEB },
@@ -353,8 +360,7 @@ static const struct MainOffsetDwordFix
 	DWORD value;
 } g_MainOffsetDwordFix[] =
 {
-	{ 0x0050EA4E, (DWORD)ScreenShotPath },
-
+	//{ 0x0050EA4E, (DWORD)ScreenShotPath },
 	{ 0, 0 }
 };
 
@@ -392,7 +398,7 @@ static const struct MainOffsetMemoryCpy
 } g_MainOffsetMemoryCpy[] =
 {
 	///- IP
-	{ IP_ADDRESS_OFFSET, (void*)IpAddress, sizeof(IpAddress) },
+	//{ IP_ADDRESS_OFFSET, (void*)IpAddress, sizeof(IpAddress) },
 	{ 0, 0, 0 }
 };
 
