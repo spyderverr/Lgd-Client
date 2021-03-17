@@ -1,0 +1,16 @@
+*.log
+*.ipch
+*.sdf
+*.opensdf
+*.suo
+*.obj
+*.tlog
+*.pdb
+*.pch
+*.map
+*.exe
+
+.vs/
+
+MainUpdated/Release
+Release/
